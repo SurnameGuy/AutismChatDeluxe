@@ -1,12 +1,20 @@
 import WalletIcon from '../../assets/icons/wallet.svg?react';
 import PayIcon from '../../assets/icons/pay.svg?react';
-import Slot1Img from '../../assets/img/slot1.jpg';
-import Slot2Img from '../../assets/img/slot2.webp';
-import Slot3Img from '../../assets/img/slot3.webp';
-import Slot4Img from '../../assets/img/slot4.png';
-
+import { BetSlot } from '../../components/BetSlot';
+import { useState } from 'react';
 
 export const BetPage = () => {
+
+    const randomInt = ({ min, max }) => {
+        let slotsArray = [];
+        for (let i = 0; i < 9; i++) {
+            slotsArray.push(Math.floor(Math.random() * (max - min + 1) + 1));
+        }
+        return slotsArray;
+    };
+
+    const [slots, setSlots] = useState(randomInt(1, 4));
+
     return (
         <>
             <div className="w-full min-h-screen bg-amber-600">
@@ -26,16 +34,8 @@ export const BetPage = () => {
 
                 <main>
                     <div id="board" className="">
-                        <div className="grid grid-cols-3 grid-rows-3 gap-1 bg-orange-400 border-1 border-red-900 shadow-md place-items-center">
-                            <img src={Slot1Img} />
-                            <img src={Slot2Img} />
-                            <img src={Slot3Img} />
-                            <img src={Slot4Img} />
-                            <img src={Slot1Img} />
-                            <img src={Slot4Img} />
-                            <img src={Slot3Img} />
-                            <img src={Slot2Img} />
-                            <img src={Slot1Img} />
+                        <div className="grid grid-cols-3 max-w-md mx-auto border-2 bg-orange-400 border-red-900 shadow-md place-items-center mb-2">
+                            <BetSlot slots={slots} />
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@ export const BetPage = () => {
                             <input type="number" min="1" step="0.05" className="bg-gray-200 text-black rounded-2xl px-1 py-1 shadow-md m-1 active:bg-gray-300"></input>
                             <button className="bg-blue-500 text-yellow-300 rounded-2xl w-[32px] h-[32px] shadow-md m-1 cursor-pointer active:bg-blue-600"> + </button>
                         </div>
-                        <div className="bg-blue-500 text-yellow-300 rounded-2xl px-2 py-1 shadow-md m-1 cursor-pointer active:bg-blue-600">
+                        <div className="bg-blue-500 text-yellow-300 rounded-2xl px-2 py-1 shadow-md m-1 cursor-pointer active:bg-blue-600" onClick={() => setSlots(randomInt(1, 4))}>
                             <img />
                             <p>Apostar</p>
                         </div>

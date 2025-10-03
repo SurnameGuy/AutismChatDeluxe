@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { BetPage } from "./pages/Bet";
 import { NotFoundPage } from './pages/NotFound';
+import { useState } from "react";
 
 const App = () => {
   return (
