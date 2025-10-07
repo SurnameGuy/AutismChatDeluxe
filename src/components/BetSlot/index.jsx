@@ -8,6 +8,7 @@ export const BetSlot = ({ slots }) => {
                     className='h-full w-full'
                     src={`./img/slot${slotNum}.png`}
                     alt={`slot ${slotNum}`}
+                    //a
                 />
             ))}
         </>
