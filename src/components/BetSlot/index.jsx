@@ -1,4 +1,5 @@
 export const BetSlot = ({ slots }) => {
+
     return (
         <>
             {slots.map((slotNum, index) => (
